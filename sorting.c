@@ -1,6 +1,22 @@
 // C program to sort an array using different sorting methods
 #include <stdio.h>
 #include <math.h>
+void swap(int *a, int *b)
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void print(int arr[], int n)
+{
+    int i;
+    for (i = 0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
 
 int main()
 {
