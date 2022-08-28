@@ -118,6 +118,27 @@ void mergeSort(int arr[], int l, int r) {
   }
 }
 
+int partition(int arr[], int l, int h)
+{   
+    int pivot=arr[h]; //choosing last element as pivot
+    int i=l-1;
+    for(int j=l;j<=h-1;j++){ //partitioning the array from low to high
+        if(arr[j]<pivot){
+            i++;
+            
+            int temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+        }
+    }
+    
+    int temp=arr[i+1];
+    arr[i+1]=arr[h];
+    arr[h]=temp;
+    
+    return i+1; 
+}
+
 int main()
 {
     int n, m, a[1000];
