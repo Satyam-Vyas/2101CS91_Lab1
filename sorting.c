@@ -139,6 +139,15 @@ int partition(int arr[], int l, int h)
     return i+1; 
 }
 
+void quicksort(int arr[],int l,int h){
+    if(l<h){
+        int p=partition(arr,l,h); 
+        //recursively calling quicksort for two subarrays
+        quicksort(arr,l,p-1);
+        quicksort(arr,p+1,h);
+    }
+}
+
 int main()
 {
     int n, m, a[1000];
