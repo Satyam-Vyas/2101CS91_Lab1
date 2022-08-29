@@ -161,6 +161,7 @@ int main()
     printf("methods to sort your array\n");
     printf("1- Insertion Sort,2- Selection Sort,3- Bubble Sort,4- Merge Sort,5- Quick Sort \n");
     printf("Enter preferred Sorting Method: ");
+    scanf("%d", &m);
     switch (m)
     {
     case 1:
