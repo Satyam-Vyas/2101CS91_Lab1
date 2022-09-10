@@ -57,94 +57,109 @@ void selectionSort(int a[], int n)
     }
 }
 
-void bubbleSort(int arr[], int n) 
+void bubbleSort(int arr[], int n)
 {
     int i, j;
-    for (i = 0; i < n - 1; i++){
-        for (j = 0; j < n - i - 1; j++){
+    for (i = 0; i < n - 1; i++)
+    {
+        for (j = 0; j < n - i - 1; j++)
+        {
             if (arr[j] > arr[j + 1])
-                swap(&arr[j], &arr[j + 1]); //swapping
+                swap(&arr[j], &arr[j + 1]); // swapping
         }
     }
 }
-void merge(int arr[], int p, int q, int r) {
-  int n = q - p + 1;
-  int m = r - q;
+void merge(int arr[], int p, int q, int r)
+{
+    int n = q - p + 1;
+    int m = r - q;
 
-  int L[n], M[m];
+    int L[n], M[m];
 
-  for (int i = 0; i < n; i++)
-    L[i] = arr[p + i];
-  for (int j = 0; j < m; j++)
-    M[j] = arr[q + 1 + j];
+    for (int i = 0; i < n; i++)
+        L[i] = arr[p + i];
+    for (int j = 0; j < m; j++)
+        M[j] = arr[q + 1 + j];
 
-  // Maintain current index of sub-arrays and main array
-  int i, j, k;
-  i = 0;
-  j = 0;
-  k = p;
-  while (i < n && j < m) {
-    if (L[i] <= M[j]) {
-      arr[k] = L[i];
-      i++;
-    } else {
-      arr[k] = M[j];
-      j++;
+    // Maintain current index of sub-arrays and main array
+    int i, j, k;
+    i = 0;
+    j = 0;
+    k = p;
+    while (i < n && j < m)
+    {
+        if (L[i] <= M[j])
+        {
+            arr[k] = L[i];
+            i++;
+        }
+        else
+        {
+            arr[k] = M[j];
+            j++;
+        }
+        k++;
     }
-    k++;
-  }
-  while (i < n) {
-    arr[k] = L[i];
-    i++;
-    k++;
-  }
+    while (i < n)
+    {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
 
-  while (j < m) {
-    arr[k] = M[j];
-    j++;
-    k++;
-  }
+    while (j < m)
+    {
+        arr[k] = M[j];
+        j++;
+        k++;
+    }
 }
 
-void mergeSort(int arr[], int l, int r) {
-  if (l < r) {
+void mergeSort(int arr[], int l, int r)
+{
+    if (l < r)
+    {
 
-    // the array is divided into two subarrays about m
-    int m = l + (r - l) / 2;
+        // the array is divided into two subarrays about m
+        int m = l + (r - l) / 2;
 
-    mergeSort(arr, l, m);
-    mergeSort(arr, m + 1, r);
-    merge(arr, l, m, r); //merging sorted subarrays
-  }
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+        merge(arr, l, m, r); // merging sorted subarrays
+    }
 }
 
 int partition(int arr[], int l, int h)
-{   
-    int pivot=arr[h]; //choosing last element as pivot
-    int i=l-1;
-    for(int j=l;j<=h-1;j++){ //partitioning the array from low to high
-        if(arr[j]<pivot){
+{
+    int pivot = arr[h]; // choosing last element as pivot
+    int i = l - 1;
+    for (int j = l; j <= h - 1; j++)
+    { // partitioning the array from low to high
+        if (arr[j] < pivot)
+        {
             i++;
-            
-            int temp=arr[i];
-            arr[i]=arr[j];
-            arr[j]=temp;
+
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
         }
     }
-    
-    int temp=arr[i+1];
-    arr[i+1]=arr[h];
-    arr[h]=temp;
-    
-    return i+1; 
+
+    int temp = arr[i + 1];
+    arr[i + 1] = arr[h];
+    arr[h] = temp;
+
+    return i + 1;
 }
 
-void quicksort(int arr[],int l,int h){
-    if(l<h){
-        int p=partition(arr,l,h); 
-        //recursively calling quicksort for two subarrays
-        quicksort(arr,l,p-1);
-        quicksort(arr,p+1,h);
+void quicksort(int arr[], int l, int h)
+{
+    if (l < h)
+    {
+        int p = partition(arr, l, h);
+        // recursively calling quicksort for two subarrays
+        quicksort(arr, l, p - 1);
+        quicksort(arr, p + 1, h);
     }
 }
 
@@ -188,6 +203,5 @@ int main()
         printf("Please enter valid option of sorting method");
         break;
     }
-    scanf("%d", &m);
     return 0;
 }
